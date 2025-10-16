@@ -1,2 +1,2 @@
-# kud-simpanpinjam
-Projek KAK simpan pinjam
+# Proyek Aplikasi KUD dan Simpan Pinjam
+Dibuat oleh: PT Huru Hara
