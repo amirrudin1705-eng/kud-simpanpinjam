@@ -1,0 +1,64 @@
+# ==========================================
+# 🐍 Django / Python
+# ==========================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+
+# Virtual environments
+venv/
+env/
+.venv/
+env.bak/
+
+# Django static & media
+staticfiles/
+media/
+
+# Local settings & secret keys
+*.env
+.env.*
+secrets.json
+
+# ==========================================
+# 🧱 Tailwind / Node.js
+# ==========================================
+node_modules/
+dist/
+build/
+package-lock.json
+*.map
+.cache/
+.tmp/
+
+# ==========================================
+# 💾 Database (MySQL dump, dsb)
+# ==========================================
+*.sql
+*.dump
+*.bak
+
+# ==========================================
+# 💻 Editor & OS
+# ==========================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# 🧩 IDE / Project Configs
+# ==========================================
+*.code-workspace
+*.iml
+
+# ==========================================
+# 🗂️ Backup / Temp
+# ==========================================
+*.bak
+*.tmp
+*.swp

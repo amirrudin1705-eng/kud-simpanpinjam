@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Aplikasi KUD Simpan Pinjam</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+
+<body class="bg-gray-100 font-sans" x-data="{ sidebarOpen: false, menu: 'home' }">
+
+  <!-- NAVBAR -->
+  <header class="bg-green-600 text-white flex items-center justify-between px-6 py-4 shadow">
+    <h1 class="text-lg font-semibold">KUD Simpan Pinjam</h1>
+    <div class="flex items-center space-x-4">
+      <button @click="sidebarOpen = !sidebarOpen" class="sm:hidden bg-white text-green-600 px-3 py-2 rounded-lg">
+        ☰
+      </button>
+      <button class="bg-white text-green-600 px-3 py-2 rounded-lg hover:bg-green-50 transition">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <div class="flex">
+    <!-- SIDEBAR -->
+    <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" 
+           class="bg-white w-64 min-h-screen border-r transform transition-transform duration-300 sm:translate-x-0">
+      <nav class="p-6">
+        <h2 class="text-gray-600 font-semibold mb-4">Menu Navigasi</h2>
+        <ul class="space-y-2">
+          <li>
+            <button @click="menu = 'home'" 
+                    :class="menu === 'home' ? 'bg-green-600 text-white' : 'text-green-700 hover:bg-green-100'" 
+                    class="w-full text-left px-4 py-2 rounded-lg font-medium transition">
+              🏠 Dashboard Utama
+            </button>
+          </li>
+          <li>
+            <button @click="menu = 'anggota'" 
+                    :class="menu === 'anggota' ? 'bg-green-600 text-white' : 'text-green-700 hover:bg-green-100'" 
+                    class="w-full text-left px-4 py-2 rounded-lg font-medium transition">
+              👥 Data Anggota
+            </button>
+          </li>
+          <li>
+            <button @click="menu = 'transaksi'" 
+                    :class="menu === 'transaksi' ? 'bg-green-600 text-white' : 'text-green-700 hover:bg-green-100'" 
+                    class="w-full text-left px-4 py-2 rounded-lg font-medium transition">
+              💰 Transaksi
+            </button>
+          </li>
+          <li>
+            <button @click="menu = 'laporan'" 
+                    :class="menu === 'laporan' ? 'bg-green-600 text-white' : 'text-green-700 hover:bg-green-100'" 
+                    class="w-full text-left px-4 py-2 rounded-lg font-medium transition">
+              📊 Laporan
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 p-6">
+      <!-- DASHBOARD -->
+      <section x-show="menu === 'home'" x-transition>
+        <h2 class="text-2xl font-semibold text-green-700 mb-4">Selamat Datang di Dashboard</h2>
+        <p class="text-gray-700">Gunakan menu di sebelah kiri untuk mengelola data koperasi.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <div class="bg-white p-5 rounded-lg shadow hover:shadow-lg transition">
+            <h3 class="text-green-600 font-semibold text-lg">Total Anggota</h3>
+            <p class="text-3xl font-bold mt-2">32</p>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow hover:shadow-lg transition">
+            <h3 class="text-green-600 font-semibold text-lg">Transaksi Bulan Ini</h3>
+            <p class="text-3xl font-bold mt-2">Rp 5.200.000</p>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow hover:shadow-lg transition">
+            <h3 class="text-green-600 font-semibold text-lg">Saldo Kas</h3>
+            <p class="text-3xl font-bold mt-2">Rp 17.450.000</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- DATA ANGGOTA -->
+      <section x-show="menu === 'anggota'" x-transition>
+        <h2 class="text-2xl font-semibold text-green-700 mb-4">Data Anggota</h2>
+        <table class="w-full bg-white rounded-lg shadow overflow-hidden">
+          <thead class="bg-green-600 text-white">
+            <tr>
+              <th class="p-3 text-left">ID</th>
+              <th class="p-3 text-left">Nama</th>
+              <th class="p-3 text-left">Status</th>
+              <th class="p-3 text-left">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b hover:bg-green-50 transition">
+              <td class="p-3">1</td>
+              <td class="p-3">Amirudin</td>
+              <td class="p-3 text-green-700 font-medium">Aktif</td>
+              <td class="p-3">
+                <button class="text-sm bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition">Detail</button>
+              </td>
+            </tr>
+            <tr class="border-b hover:bg-green-50 transition">
+              <td class="p-3">2</td>
+              <td class="p-3">Aulia</td>
+              <td class="p-3 text-green-700 font-medium">Aktif</td>
+              <td class="p-3">
+                <button class="text-sm bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition">Detail</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- TRANSAKSI -->
+      <section x-show="menu === 'transaksi'" x-transition>
+        <h2 class="text-2xl font-semibold text-green-700 mb-4">Transaksi Simpan Pinjam</h2>
+        <p class="text-gray-700 mb-3">Daftar transaksi terbaru.</p>
+        <div class="bg-white p-5 rounded-lg shadow">
+          <table class="w-full">
+            <thead class="bg-green-600 text-white">
+              <tr>
+                <th class="p-2 text-left">Tanggal</th>
+                <th class="p-2 text-left">Nama Anggota</th>
+                <th class="p-2 text-left">Jenis</th>
+                <th class="p-2 text-left">Jumlah</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b hover:bg-green-50 transition">
+                <td class="p-2">2025-10-12</td>
+                <td class="p-2">Dwi Rahma</td>
+                <td class="p-2 text-green-700 font-medium">Simpanan</td>
+                <td class="p-2">Rp 250.000</td>
+              </tr>
+              <tr class="border-b hover:bg-green-50 transition">
+                <td class="p-2">2025-10-11</td>
+                <td class="p-2">Rafi Saputra</td>
+                <td class="p-2 text-red-600 font-medium">Pinjaman</td>
+                <td class="p-2">Rp 1.000.000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- LAPORAN -->
+      <section x-show="menu === 'laporan'" x-transition>
+        <h2 class="text-2xl font-semibold text-green-700 mb-4">Laporan Keuangan</h2>
+        <p class="text-gray-700">Fitur laporan akan dihubungkan ke backend Django nanti.</p>
+        <div class="mt-4 bg-white p-6 rounded-lg shadow text-gray-600">
+          <p>📊 Grafik laporan transaksi akan ditampilkan di sini.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
